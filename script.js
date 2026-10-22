@@ -1,6 +1,19 @@
+// REST Countries v3.1 has been retired (v5 needs an API key): when the API does not
+// return a list, fall back to the bundled sample in sample-countries.js.
+async function fetchCountries(url, keep) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (Array.isArray(data)) return data;
+    } catch (error) {
+        // network error or invalid JSON: use the offline sample below
+    }
+    document.getElementById("offline-badge").hidden = false;
+    return SAMPLE_COUNTRIES.filter(keep || (() => true));
+}
+
 async function getCountry() {
-    const url = await fetch("https://restcountries.com/v3.1/all");
-    const res = await url.json();
+    const res = await fetchCountries("https://restcountries.com/v3.1/all");
 
     var listCountry = document.getElementById("list-country");
     listCountry.innerHTML = "";
@@ -14,8 +27,8 @@ async function getCountry() {
 }
 
 async function getCountryByRegion(country) {
-    const url = await fetch("https://restcountries.com/v3.1/region/" + country);
-    const res = await url.json();
+    const res = await fetchCountries("https://restcountries.com/v3.1/region/" + country,
+        c => c.region.toLowerCase() === country.toLowerCase());
 
     var listCountry = document.getElementById("list-country");
     listCountry.innerHTML = "";
@@ -30,8 +43,8 @@ async function searchCountry() {
     document.getElementById("search").value = "";
 
     console.log(search);
-    const url = await fetch("https://restcountries.com/v3.1/name/" + search);
-    const res = await url.json();
+    const res = await fetchCountries("https://restcountries.com/v3.1/name/" + search,
+        c => c.name.common.toLowerCase().includes(search.toLowerCase()));
 
     var listCountry = document.getElementById("list-country");
     listCountry.innerHTML = "";

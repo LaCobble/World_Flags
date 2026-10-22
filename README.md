@@ -1,49 +1,78 @@
 # World Flags
 
-<p align="center">
-<img src="https://github.com/LaCobble/World_Flags/assets/71151090/09b9a39a-bb41-4f49-8181-6419e5ac26e0" width=40% height=40%>
-</p>
+Browse the flags of every country, search them by name and filter them by region.
 
-This is a simple web application that allows you to search and browse flags from different regions of the world. You can search for specific countries or filter flags by region. The application is built using HTML, CSS, and JavaScript.
+[![CI](https://github.com/LaCobble/World_Flags/actions/workflows/ci.yml/badge.svg)](https://github.com/LaCobble/World_Flags/actions/workflows/ci.yml)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![JavaScript](https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-CSS3-E34F26?logo=html5&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-## Features
+## What it does
 
-Search for flags: You can enter a country name in the search bar to find its corresponding flag. The search is case-insensitive and provides real-time results as you type.
+A vanilla HTML/CSS/JavaScript page that loads country data from the [REST Countries](https://restcountries.com/) API and shows a card per country (flag, name, population, region, capital):
 
-Filter flags by region: You can select a region from the dropdown menu to filter flags based on that region. The available regions are Africa, Americas, Asia, Europe, and Oceania.
+- **Search** a country by name.
+- **Filter** by region: Africa, Americas, Asia, Europe, Oceania.
+- **Light / dark mode** toggle.
 
-Light mode: You can toggle between light and dark mode using the "Light Mode" button. This allows you to customize the appearance of the application according to your preference.
+## Screenshots
 
-## Getting Started
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/all-flags.webp" alt="All countries (offline sample)"><br><sub>All countries (offline sample)</sub></td>
+    <td width="50%"><img src="docs/images/region.webp" alt="Region filter: Oceania"><br><sub>Region filter: Oceania</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/search.webp" alt="Search: “land”"><br><sub>Search: “land”</sub></td>
+    <td width="50%"><img src="docs/images/light.webp" alt="Light mode"><br><sub>Light mode</sub></td>
+  </tr>
+</table>
 
-To run this application locally, follow these steps:
+<sub>Captured with headless Chrome from a local run (October 2026), using the bundled sample data.</sub>
 
-Clone the repository:
+## Offline sample data
 
-```git clone https://github.com/La_Cobble/your-repo.git```
+The app was written for the REST Countries **v3.1** API, which has since been retired; the current **v5** API requires an account and an API key, which a public static page cannot keep secret. When the API does not return a country list, the app now falls back to `sample-countries.js`: 40 countries across all five regions (populations from the World Bank, 2025 estimates; flags from [flagcdn.com](https://flagcdn.com/)) and shows a discreet **Offline sample data** badge. Search and the region filter keep working on that sample.
 
-Open the project folder:
+## Prerequisites
 
-```cd your-repo```
+- A modern web browser with an internet connection (flag images are loaded from flagcdn.com).
 
-Open the index.html file in your preferred web browser.
+## Getting started
 
-## Dependencies
+```bash
+git clone https://github.com/LaCobble/World_Flags.git
+cd World_Flags
+open index.html        # or double-click it / use `xdg-open` on Linux
+```
 
-This application doesn't have any external dependencies. It only relies on the included HTML, CSS, and JavaScript files.
+There is no build step and no test suite; the CI checks the JavaScript syntax, that every local asset referenced by the HTML exists, and scans for secrets.
+
+## Project structure
+
+```
+World_Flags/
+├── index.html   # layout: search bar, region filter, card grid
+├── script.js    # API calls (async/await + fetch) with offline fallback, card rendering, theme toggle
+├── sample-countries.js  # bundled sample of 40 countries
+└── index.css
+```
+
+## What it demonstrates
+
+- Calling a public REST API with `fetch` and `async`/`await`.
+- Building DOM elements dynamically from JSON.
+- Theme switching with CSS classes.
+
+## Context
+
+Personal / school web project built in June 2023. Kept as a portfolio piece; no longer actively developed.
 
 ## Contributing
 
-Contributions are welcome! If you want to enhance the functionality or fix any issues, feel free to fork this repository and submit a pull request. Make sure to follow the existing coding style and add appropriate documentation where necessary.
+See [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Security issues: [SECURITY.md](SECURITY.md).
 
-## License
+## License and credits
 
-This project is licensed under the MIT License. Feel free to use, modify, and distribute the code as per the terms of the license.
-
-## Acknowledgements
-The flags used in this application are sourced from Flagpedia.
-The globe logo used in the favicon is created by Vecteezy.
-
-## Contact
-
-Thank you for using the World_Flag application! If you have any questions or need further assistance, please feel free to contact us.
+[MIT](LICENSE) © LaCobble. Country data from [REST Countries](https://restcountries.com/) and, for the offline sample, the [World Bank](https://data.worldbank.org/indicator/SP.POP.TOTL); flags from [flagcdn.com](https://flagcdn.com/); favicon globe from Vecteezy.

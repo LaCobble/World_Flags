@@ -18,17 +18,17 @@ A vanilla HTML/CSS/JavaScript page that loads country data from the [REST Countr
 
 ## Screenshot
 
-<p align="center">
-<img src="https://github.com/LaCobble/World_Flags/assets/71151090/09b9a39a-bb41-4f49-8181-6419e5ac26e0" alt="World Flags screenshot" width="60%">
-</p>
+<img src="docs/images/offline-sample.webp" alt="World Flags showing the offline sample data" width="700">
 
-<sub>Screenshot from 2023.</sub>
+<sub>Rendered locally in headless Chrome (October 2026), using the bundled sample data.</sub>
 
-> **Known issue:** the app calls the REST Countries **v3.1** endpoints, which have since been deprecated and now return an error, so the flag grid stays empty. Migrating `script.js` to the current API version is needed to make it work again.
+## Offline sample data
+
+The app was written for the REST Countries **v3.1** API, which has since been retired; the current **v5** API requires an account and an API key, which a public static page cannot keep secret. When the API does not return a country list, the app now falls back to `sample-countries.js`: 40 countries across all five regions (populations from the World Bank, 2025 estimates; flags from [flagcdn.com](https://flagcdn.com/)) and shows a discreet **Offline sample data** badge. Search and the region filter keep working on that sample.
 
 ## Prerequisites
 
-- A modern web browser with an internet connection (data comes from the REST Countries API).
+- A modern web browser with an internet connection (flag images are loaded from flagcdn.com).
 
 ## Getting started
 
@@ -45,7 +45,8 @@ There is no build step and no test suite; the CI checks the JavaScript syntax, t
 ```
 World_Flags/
 ├── index.html   # layout: search bar, region filter, card grid
-├── script.js    # API calls (async/await + fetch), card rendering, theme toggle
+├── script.js    # API calls (async/await + fetch) with offline fallback, card rendering, theme toggle
+├── sample-countries.js  # bundled sample of 40 countries
 └── index.css
 ```
 
@@ -65,4 +66,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT
 
 ## License and credits
 
-[MIT](LICENSE) © LaCobble. Country data and flags from [REST Countries](https://restcountries.com/); favicon globe from Vecteezy.
+[MIT](LICENSE) © LaCobble. Country data from [REST Countries](https://restcountries.com/) and, for the offline sample, the [World Bank](https://data.worldbank.org/indicator/SP.POP.TOTL); flags from [flagcdn.com](https://flagcdn.com/); favicon globe from Vecteezy.

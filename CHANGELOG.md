@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Portfolio README, MIT license, contributing guide, code of conduct and security policy.
 - GitHub CI (Linux checks), release workflow, issue and PR templates, Dependabot.
 
+### Fixed
+
+- The flag grid stayed empty since REST Countries retired its v3.1 API: the app now falls back to a bundled sample of 40 countries (flagged "Offline sample data"), with search and region filter still working.
+
 ## [1.0.0] - 2023-06-01
 
 ### Added

@@ -1,49 +1,68 @@
 # World Flags
 
+Browse the flags of every country, search them by name and filter them by region.
+
+[![CI](https://github.com/LaCobble/World_Flags/actions/workflows/ci.yml/badge.svg)](https://github.com/LaCobble/World_Flags/actions/workflows/ci.yml)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![JavaScript](https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-CSS3-E34F26?logo=html5&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+## What it does
+
+A vanilla HTML/CSS/JavaScript page that loads country data from the [REST Countries](https://restcountries.com/) API and shows a card per country (flag, name, population, region, capital):
+
+- **Search** a country by name.
+- **Filter** by region: Africa, Americas, Asia, Europe, Oceania.
+- **Light / dark mode** toggle.
+
+## Screenshot
+
 <p align="center">
-<img src="https://github.com/LaCobble/World_Flags/assets/71151090/09b9a39a-bb41-4f49-8181-6419e5ac26e0" width=40% height=40%>
+<img src="https://github.com/LaCobble/World_Flags/assets/71151090/09b9a39a-bb41-4f49-8181-6419e5ac26e0" alt="World Flags screenshot" width="60%">
 </p>
 
-This is a simple web application that allows you to search and browse flags from different regions of the world. You can search for specific countries or filter flags by region. The application is built using HTML, CSS, and JavaScript.
+<sub>Screenshot from 2023.</sub>
 
-## Features
+> **Known issue:** the app calls the REST Countries **v3.1** endpoints, which have since been deprecated and now return an error, so the flag grid stays empty. Migrating `script.js` to the current API version is needed to make it work again.
 
-Search for flags: You can enter a country name in the search bar to find its corresponding flag. The search is case-insensitive and provides real-time results as you type.
+## Prerequisites
 
-Filter flags by region: You can select a region from the dropdown menu to filter flags based on that region. The available regions are Africa, Americas, Asia, Europe, and Oceania.
+- A modern web browser with an internet connection (data comes from the REST Countries API).
 
-Light mode: You can toggle between light and dark mode using the "Light Mode" button. This allows you to customize the appearance of the application according to your preference.
+## Getting started
 
-## Getting Started
+```bash
+git clone https://github.com/LaCobble/World_Flags.git
+cd World_Flags
+open index.html        # or double-click it / use `xdg-open` on Linux
+```
 
-To run this application locally, follow these steps:
+There is no build step and no test suite; the CI checks the JavaScript syntax, that every local asset referenced by the HTML exists, and scans for secrets.
 
-Clone the repository:
+## Project structure
 
-```git clone https://github.com/La_Cobble/your-repo.git```
+```
+World_Flags/
+├── index.html   # layout: search bar, region filter, card grid
+├── script.js    # API calls (async/await + fetch), card rendering, theme toggle
+└── index.css
+```
 
-Open the project folder:
+## What it demonstrates
 
-```cd your-repo```
+- Calling a public REST API with `fetch` and `async`/`await`.
+- Building DOM elements dynamically from JSON.
+- Theme switching with CSS classes.
 
-Open the index.html file in your preferred web browser.
+## Context
 
-## Dependencies
-
-This application doesn't have any external dependencies. It only relies on the included HTML, CSS, and JavaScript files.
+Personal / school web project built in June 2023. Kept as a portfolio piece; no longer actively developed.
 
 ## Contributing
 
-Contributions are welcome! If you want to enhance the functionality or fix any issues, feel free to fork this repository and submit a pull request. Make sure to follow the existing coding style and add appropriate documentation where necessary.
+See [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Security issues: [SECURITY.md](SECURITY.md).
 
-## License
+## License and credits
 
-This project is licensed under the MIT License. Feel free to use, modify, and distribute the code as per the terms of the license.
-
-## Acknowledgements
-The flags used in this application are sourced from Flagpedia.
-The globe logo used in the favicon is created by Vecteezy.
-
-## Contact
-
-Thank you for using the World_Flag application! If you have any questions or need further assistance, please feel free to contact us.
+[MIT](LICENSE) © LaCobble. Country data and flags from [REST Countries](https://restcountries.com/); favicon globe from Vecteezy.

@@ -16,11 +16,20 @@ A vanilla HTML/CSS/JavaScript page that loads country data from the [REST Countr
 - **Filter** by region: Africa, Americas, Asia, Europe, Oceania.
 - **Light / dark mode** toggle.
 
-## Screenshot
+## Screenshots
 
-<img src="docs/images/offline-sample.webp" alt="World Flags showing the offline sample data" width="700">
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/all-flags.webp" alt="All countries (offline sample)"><br><sub>All countries (offline sample)</sub></td>
+    <td width="50%"><img src="docs/images/region.webp" alt="Region filter: Oceania"><br><sub>Region filter: Oceania</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/search.webp" alt="Search: “land”"><br><sub>Search: “land”</sub></td>
+    <td width="50%"><img src="docs/images/light.webp" alt="Light mode"><br><sub>Light mode</sub></td>
+  </tr>
+</table>
 
-<sub>Rendered locally in headless Chrome (October 2026), using the bundled sample data.</sub>
+<sub>Captured with headless Chrome from a local run (October 2026), using the bundled sample data.</sub>
 
 ## Offline sample data
 
